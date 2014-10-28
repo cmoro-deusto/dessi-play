@@ -1,5 +1,6 @@
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import controllers.Morph;
 import models.User;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -16,11 +17,12 @@ public class Global extends GlobalSettings {
 
         try {
             Logger.info("Initializing MongoDB");
-            MongoClient mongo = new MongoClient("127.0.0.1");
-            Morphia morph = new Morphia();
-            Datastore ds = morph.createDatastore(mongo, "test");
-            ds.ensureIndexes();
-            ds.ensureCaps();
+
+            Morph.mongo = new MongoClient("127.0.0.1");
+            Morph.morphia = new Morphia();
+            Morph.ds = Morph.morphia.createDatastore(Morph.mongo, "test");
+            Morph.ds.ensureIndexes();
+            Morph.ds.ensureCaps();
 
 
             Logger.debug("Inserting user");
@@ -30,7 +32,7 @@ public class Global extends GlobalSettings {
             usr.last = "Snow";
             usr.username = "jsnow";
             usr.pass = "iknownothing";
-            ds.save(usr);
+            Morph.ds.save(usr);
 
         } catch (UnknownHostException uhe) {
             uhe.printStackTrace();
