@@ -12,5 +12,6 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   "org.webjars" %% "webjars-play" % "2.3.0-2",
-  "org.webjars" % "bootstrap" % "3.2.0"
+  "org.webjars" % "bootstrap" % "3.2.0",
+  "org.mongodb.morphia" % "morphia" % "0.108"
 )
