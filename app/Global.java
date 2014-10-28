@@ -24,16 +24,6 @@ public class Global extends GlobalSettings {
             Morph.ds.ensureIndexes();
             Morph.ds.ensureCaps();
 
-
-            Logger.debug("Inserting user");
-
-            User usr = new User();
-            usr.name = "John";
-            usr.last = "Snow";
-            usr.username = "jsnow";
-            usr.pass = "iknownothing";
-            Morph.ds.save(usr);
-
         } catch (UnknownHostException uhe) {
             uhe.printStackTrace();
         }
