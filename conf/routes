@@ -8,4 +8,5 @@ GET     /hello/:name/:age           controllers.HelloWorld.hello(name: String, a
 
 
 # Map static resources from the /public folder to the /assets URL path
+GET     /webjars/*file              controllers.WebJarAssets.at(file)
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
