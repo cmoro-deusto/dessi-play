@@ -1,6 +1,7 @@
 package controllers;
 
 import models.User;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -19,5 +20,10 @@ public class Users extends Controller {
         Morph.ds.save(user);
 
         return ok("Created user " + username);
+    }
+
+    public static Result list() {
+
+        return ok(Json.toJson(User.listAll()));
     }
 }
