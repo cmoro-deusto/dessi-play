@@ -1,6 +1,7 @@
 package controllers;
 
 import models.User;
+import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -10,16 +11,14 @@ import play.mvc.Result;
  */
 public class Users extends Controller {
 
-    public static Result create(String name, String lastname, String username, String pass) {
+    public static Result create() {
 
-        User user = new User();
-        user.name = name;
-        user.last = lastname;
-        user.username = username;
-        user.pass = pass;
+        Form<User> userForm = Form.form(User.class);
+
+        User user = userForm.bindFromRequest().get();
         Morph.ds.save(user);
 
-        return ok("Created user " + username);
+        return ok("Created user " + user.username);
     }
 
     public static Result list() {
@@ -30,5 +29,10 @@ public class Users extends Controller {
     public static Result search(String username) {
 
         return ok(Json.toJson(User.searchUsername(username)));
+    }
+
+    public static Result index() {
+
+        return ok(views.html.users.render());
     }
 }
