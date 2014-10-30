@@ -33,4 +33,9 @@ public class User {
 
         return Morph.ds.find(User.class).asList();
     }
+
+    public static User searchUsername(String username) {
+
+        return Morph.ds.find(User.class).filter("username", username).limit(1).get();
+    }
 }

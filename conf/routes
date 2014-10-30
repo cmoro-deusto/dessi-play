@@ -7,6 +7,7 @@ GET        /                                    controllers.Application.index()
 GET        /hello/:name/:age                    controllers.HelloWorld.hello(name: String, age: Int)
 GET        /users                               controllers.Users.create(name: String, lastname: String, username: String, pass: String)
 GET        /users/list                          controllers.Users.list()
+GET        /users/search                        controllers.Users.search(username: String)
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -26,4 +26,9 @@ public class Users extends Controller {
 
         return ok(Json.toJson(User.listAll()));
     }
+
+    public static Result search(String username) {
+
+        return ok(Json.toJson(User.searchUsername(username)));
+    }
 }
