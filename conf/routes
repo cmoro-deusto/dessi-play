@@ -13,7 +13,12 @@ POST        /users                   controllers.Users.create()
 
 
 GET         /users/list              controllers.Users.list()
-GET         /users/search            controllers.Users.search(username: String)
+
+
+GET         /users/search            controllers.Users.search()
+
+
+POST        /users/search            controllers.Users.doSearch()
 
 
 # Map static resources from the /public folder to the /assets URL path
